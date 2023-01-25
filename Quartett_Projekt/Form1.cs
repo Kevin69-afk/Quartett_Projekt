@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Quartett_Projekt
 {
-    public partial class Form1 : Form
+    public partial class Quartett_Spielfeld : Form
     {
-        public Form1()
+        public Quartett_Spielfeld()
         {
             InitializeComponent();
+        }
+
+        private void Quartett_Spielfeld_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
