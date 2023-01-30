@@ -7,6 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartett_Projekt", "Quartet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{66CE97AB-16EB-4FC7-9394-3A885264326F}"
 	ProjectSection(SolutionItems) = preProject
+		Class1.cs = Class1.cs
+		Class2.cs = Class2.cs
+		Deck.cs = Deck.cs
 		Player.cs = Player.cs
 	EndProjectSection
 EndProject
