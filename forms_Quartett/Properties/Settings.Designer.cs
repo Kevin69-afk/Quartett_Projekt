@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Quartett_Projekt.Properties
+namespace forms_Quartett.Properties
 {
 
 

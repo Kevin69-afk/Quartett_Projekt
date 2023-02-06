@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("Quartett_Projekt")]
+[assembly: AssemblyTitle("forms_Quartett")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Quartett_Projekt")]
+[assembly: AssemblyProduct("forms_Quartett")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("38b9b480-6a43-4dfd-bbe3-93afbd8c81f8")]
+[assembly: Guid("161bfc1b-b546-47d5-b354-3a5570f257e3")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //

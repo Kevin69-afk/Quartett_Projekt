@@ -1,1 +1,0 @@
-# Quartett_Projekt

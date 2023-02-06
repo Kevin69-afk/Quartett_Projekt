@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Quartett_Projekt
+namespace forms_Quartett
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Quartett_Projekt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Quartett_Spielfeld());
+            Application.Run(new Form1());
         }
     }
 }
