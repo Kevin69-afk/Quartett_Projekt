@@ -19,26 +19,19 @@ namespace forms_Quartett
         {
             InitializeComponent();
         }
-        string[] name = new string[32];
 
-        int[] ps = new int[32];
-        int[] kmh = new int[32];
-        int[] speed = new int[32];
-        int[] Value = new int[32];
-        int[] weight = new int[32];
-        int[] Baujahr = new int[32];
-
-        private void setps()
-        {
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        Playcard[] playcard = new Playcard[32];
 
         void ExcelFileReader(string filePath)
         {
+            string[] name = new string[32];
+            int[] ps = new int[32];
+            int[] kmh = new int[32];
+            int[] speed = new int[32];
+            int[] value = new int[32];
+            int[] weight = new int[32];
+            int[] baujahr = new int[32];
+
             FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
             IExcelDataReader excelReader;
 
@@ -64,9 +57,11 @@ namespace forms_Quartett
                 ps[i] = Convert.ToInt32(result.Tables[0].Rows[i][1]);
                 kmh[i] = Convert.ToInt32(result.Tables[0].Rows[i][2]);
                 speed[i] = Convert.ToInt32(result.Tables[0].Rows[i][3]);
-                Value[i] = Convert.ToInt32(result.Tables[0].Rows[i][4]);
+                value[i] = Convert.ToInt32(result.Tables[0].Rows[i][4]);
                 weight[i] = Convert.ToInt32(result.Tables[0].Rows[i][5]);
-                Baujahr[i] = Convert.ToInt32(result.Tables[0].Rows[i][6]);
+                baujahr[i] = Convert.ToInt32(result.Tables[0].Rows[i][6]);
+
+                playcard[i] = new Playcard(name[i], ps[i], kmh[i], speed[i], value[i], weight[i], baujahr[i]);
             }
 
 

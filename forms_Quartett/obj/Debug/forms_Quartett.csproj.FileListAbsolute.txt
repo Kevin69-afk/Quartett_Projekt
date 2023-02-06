@@ -1,0 +1,17 @@
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\forms_Quartett.exe.config
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\forms_Quartett.exe
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\forms_Quartett.pdb
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.DataSet.dll
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.dll
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.pdb
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.xml
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.DataSet.pdb
+D:\Github\Quartett_Projekt\forms_Quartett\bin\Debug\ExcelDataReader.DataSet.xml
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.AssemblyReference.cache
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.SuggestedBindingRedirects.cache
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.Properties.Resources.resources
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.GenerateResource.cache
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CoreCompileInputs.cache
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CopyComplete
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.exe
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.pdb
