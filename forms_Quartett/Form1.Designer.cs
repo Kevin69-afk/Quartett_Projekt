@@ -204,6 +204,7 @@
             this.buttonStart.Text = "S\r\nT\r\nA\r\nR\r\nT";
             this.buttonStart.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // Form1
             // 

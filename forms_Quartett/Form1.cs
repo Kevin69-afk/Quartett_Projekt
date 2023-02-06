@@ -19,10 +19,7 @@ namespace forms_Quartett
 
         int category = 0;
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void buttonPS_Click(object sender, EventArgs e)
         {
@@ -31,27 +28,27 @@ namespace forms_Quartett
 
         private void buttonKmH_Click(object sender, EventArgs e)
         {
-            category= 2;
+            category = 2;
         }
 
         private void buttonMaxSpd_Click(object sender, EventArgs e)
         {
-            category= 3;
+            category = 3;
         }
 
         private void buttonWert_Click(object sender, EventArgs e)
         {
-            category= 4;
+            category = 4;
         }
 
         private void buttonGewicht_Click(object sender, EventArgs e)
         {
-            category= 5;
+            category = 5;
         }
 
         private void buttonBaujahr_Click(object sender, EventArgs e)
         {
-            category    
+            category = 6;
         }
     }
 }
