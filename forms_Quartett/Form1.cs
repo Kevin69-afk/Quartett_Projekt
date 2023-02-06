@@ -17,9 +17,41 @@ namespace forms_Quartett
             InitializeComponent();
         }
 
+        int category = 0;
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonPS_Click(object sender, EventArgs e)
+        {
+            category = 1;
+        }
+
+        private void buttonKmH_Click(object sender, EventArgs e)
+        {
+            category= 2;
+        }
+
+        private void buttonMaxSpd_Click(object sender, EventArgs e)
+        {
+            category= 3;
+        }
+
+        private void buttonWert_Click(object sender, EventArgs e)
+        {
+            category= 4;
+        }
+
+        private void buttonGewicht_Click(object sender, EventArgs e)
+        {
+            category= 5;
+        }
+
+        private void buttonBaujahr_Click(object sender, EventArgs e)
+        {
+            category    
         }
     }
 }

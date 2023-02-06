@@ -141,6 +141,7 @@
             this.buttonPS.TabIndex = 14;
             this.buttonPS.Text = "PS";
             this.buttonPS.UseVisualStyleBackColor = true;
+            this.buttonPS.Click += new System.EventHandler(this.buttonPS_Click);
             // 
             // buttonKmH
             // 
@@ -150,6 +151,7 @@
             this.buttonKmH.TabIndex = 15;
             this.buttonKmH.Text = "Km/h";
             this.buttonKmH.UseVisualStyleBackColor = true;
+            this.buttonKmH.Click += new System.EventHandler(this.buttonKmH_Click);
             // 
             // buttonMaxSpd
             // 
@@ -159,6 +161,7 @@
             this.buttonMaxSpd.TabIndex = 16;
             this.buttonMaxSpd.Text = "MaxSpd";
             this.buttonMaxSpd.UseVisualStyleBackColor = true;
+            this.buttonMaxSpd.Click += new System.EventHandler(this.buttonMaxSpd_Click);
             // 
             // buttonWert
             // 
@@ -168,6 +171,7 @@
             this.buttonWert.TabIndex = 17;
             this.buttonWert.Text = "€";
             this.buttonWert.UseVisualStyleBackColor = true;
+            this.buttonWert.Click += new System.EventHandler(this.buttonWert_Click);
             // 
             // buttonGewicht
             // 
@@ -177,6 +181,7 @@
             this.buttonGewicht.TabIndex = 18;
             this.buttonGewicht.Text = "Gewicht";
             this.buttonGewicht.UseVisualStyleBackColor = true;
+            this.buttonGewicht.Click += new System.EventHandler(this.buttonGewicht_Click);
             // 
             // buttonBaujahr
             // 
@@ -186,6 +191,7 @@
             this.buttonBaujahr.TabIndex = 19;
             this.buttonBaujahr.Text = "Baujahr";
             this.buttonBaujahr.UseVisualStyleBackColor = true;
+            this.buttonBaujahr.Click += new System.EventHandler(this.buttonBaujahr_Click);
             // 
             // buttonStart
             // 
@@ -221,7 +227,6 @@
             this.Controls.Add(this.labelPlayer);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
