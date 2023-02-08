@@ -169,12 +169,12 @@ namespace forms_Quartett
             //1. Reading Excel file
             if (Path.GetExtension(filePath).ToUpper() == ".XLS")
             {
-                //1.1 Reading from a binary Excel file ('97-2003 format; .xls)
+                //1.1 Reading from a binary Excel file ('97-2003 format; *.xls)
                 excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
             }
             else
             {
-                //1.2 Reading from a OpenXml Excel file (2007 format;.xlsx)
+                //1.2 Reading from a OpenXml Excel file (2007 format; *.xlsx)
                 excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
             }
 
