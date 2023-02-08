@@ -21,47 +21,137 @@ namespace forms_Quartett
         }
 
         Playcard[] playcard = new Playcard[32];
+        Random rnd = new Random();
 
-        int category = 0;
-
+        int category = 0, activePlayer = 0, comPlayer = 0;
 
 
         private void buttonPS_Click(object sender, EventArgs e)
         {
-            category = 1;
+            category = 1; //PS
         }
 
         private void buttonKmH_Click(object sender, EventArgs e)
         {
-            category = 2;
+            category = 2; //KmH (0-100)
         }
 
         private void buttonMaxSpd_Click(object sender, EventArgs e)
         {
-            category = 3;
+            category = 3; //Speed
         }
 
         private void buttonWert_Click(object sender, EventArgs e)
         {
-            category = 4;
+            category = 4; //Wert
         }
 
         private void buttonGewicht_Click(object sender, EventArgs e)
         {
-            category = 5;
+            category = 5; //Gewicht
         }
 
         private void buttonBaujahr_Click(object sender, EventArgs e)
         {
-            category = 6;
+            category = 6; //Baujahr
+        }
+
+        private void buttonP1_Click(object sender, EventArgs e)
+        {
+            comPlayer = 1;
+        }
+
+        private void buttonP2_Click(object sender, EventArgs e)
+        {
+            comPlayer= 2;
+        }
+
+        private void buttonP3_Click(object sender, EventArgs e)
+        {
+            comPlayer= 3;
+        }
+
+        private void buttonP4_Click(object sender, EventArgs e)
+        {
+            comPlayer= 4;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            switch (category)
+            {
+                case 1:
+                    if (playcard[activePlayer].ps > playcard[comPlayer].ps)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }else if(playcard[activePlayer].ps <= playcard[comPlayer].ps)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                        activePlayer = comPlayer;
+                    }
+                    break;
 
+                
+                case 2:
+                    if (playcard[activePlayer].kmh > playcard[comPlayer].kmh)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }
+                    else if (playcard[activePlayer].kmh <= playcard[comPlayer].kmh)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                    }
+                    break;
+
+
+                case 3:
+                    if (playcard[activePlayer].speed > playcard[comPlayer].speed)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }
+                    else if (playcard[activePlayer].speed <= playcard[comPlayer].speed)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                    }
+                    break;
+
+
+                case 4:
+                    if (playcard[activePlayer].value > playcard[comPlayer].value)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }
+                    else if (playcard[activePlayer].value <= playcard[comPlayer].value)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                    }
+                    break;
+
+
+                case 5:
+                    if (playcard[activePlayer].weight > playcard[comPlayer].weight)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }
+                    else if (playcard[activePlayer].weight <= playcard[comPlayer].weight)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                    }
+                    break;
+
+
+                case 6:
+                    if (playcard[activePlayer].baujahr > playcard[comPlayer].baujahr)
+                    {
+                        buttonStart.BackColor = Color.LightGreen;
+                    }
+                    else if (playcard[activePlayer].baujahr <= playcard[comPlayer].baujahr)
+                    {
+                        buttonStart.BackColor = Color.Red;
+                    }
+                    break;
+            }
         }
-
-
 
         void ExcelFileReader(string filePath)
         {
@@ -104,8 +194,19 @@ namespace forms_Quartett
 
                 playcard[i] = new Playcard(name[i], ps[i], kmh[i], speed[i], value[i], weight[i], baujahr[i]);
             }
+        }
 
 
+        private void ErrorSamePlayer()
+        {
+            string message = "You cannot choose yourself. A random Player will be choosen for you.";
+            string caption = "Fatal Error";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+
+            while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 5);
         }
     }
 }
