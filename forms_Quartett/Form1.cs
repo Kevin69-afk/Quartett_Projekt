@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using ExcelDataReader;
 
 namespace forms_Quartett
 {
@@ -17,9 +20,9 @@ namespace forms_Quartett
             InitializeComponent();
         }
 
+        Playcard[] playcard = new Playcard[32];
+
         int category = 0;
-
-
 
         private void buttonPS_Click(object sender, EventArgs e)
         {
@@ -52,3 +55,4 @@ namespace forms_Quartett
         }
     }
 }
+
