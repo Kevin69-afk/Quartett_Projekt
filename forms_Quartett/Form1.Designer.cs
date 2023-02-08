@@ -43,6 +43,11 @@
             this.buttonGewicht = new System.Windows.Forms.Button();
             this.buttonBaujahr = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonP2 = new System.Windows.Forms.Button();
+            this.buttonP3 = new System.Windows.Forms.Button();
+            this.buttonP4 = new System.Windows.Forms.Button();
+            this.buttonP1 = new System.Windows.Forms.Button();
+            this.labelOffHand = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelPlayer
@@ -206,11 +211,67 @@
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // buttonP2
+            // 
+            this.buttonP2.Location = new System.Drawing.Point(126, 353);
+            this.buttonP2.Name = "buttonP2";
+            this.buttonP2.Size = new System.Drawing.Size(100, 70);
+            this.buttonP2.TabIndex = 21;
+            this.buttonP2.Text = "Player 2";
+            this.buttonP2.UseVisualStyleBackColor = true;
+            this.buttonP2.Click += new System.EventHandler(this.buttonP2_Click);
+            // 
+            // buttonP3
+            // 
+            this.buttonP3.Location = new System.Drawing.Point(232, 353);
+            this.buttonP3.Name = "buttonP3";
+            this.buttonP3.Size = new System.Drawing.Size(100, 70);
+            this.buttonP3.TabIndex = 22;
+            this.buttonP3.Text = "Player 3";
+            this.buttonP3.UseVisualStyleBackColor = true;
+            this.buttonP3.Click += new System.EventHandler(this.buttonP3_Click);
+            // 
+            // buttonP4
+            // 
+            this.buttonP4.Location = new System.Drawing.Point(338, 353);
+            this.buttonP4.Name = "buttonP4";
+            this.buttonP4.Size = new System.Drawing.Size(100, 70);
+            this.buttonP4.TabIndex = 23;
+            this.buttonP4.Text = "Player 4";
+            this.buttonP4.UseVisualStyleBackColor = true;
+            this.buttonP4.Click += new System.EventHandler(this.buttonP4_Click);
+            // 
+            // buttonP1
+            // 
+            this.buttonP1.Location = new System.Drawing.Point(20, 353);
+            this.buttonP1.Name = "buttonP1";
+            this.buttonP1.Size = new System.Drawing.Size(100, 70);
+            this.buttonP1.TabIndex = 24;
+            this.buttonP1.Text = "Player 1";
+            this.buttonP1.UseVisualStyleBackColor = true;
+            this.buttonP1.Click += new System.EventHandler(this.buttonP1_Click);
+            // 
+            // labelOffHand
+            // 
+            this.labelOffHand.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.labelOffHand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOffHand.Location = new System.Drawing.Point(444, 353);
+            this.labelOffHand.Name = "labelOffHand";
+            this.labelOffHand.Size = new System.Drawing.Size(119, 70);
+            this.labelOffHand.TabIndex = 25;
+            this.labelOffHand.Text = "Off-Hand";
+            this.labelOffHand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 376);
+            this.ClientSize = new System.Drawing.Size(580, 435);
+            this.Controls.Add(this.labelOffHand);
+            this.Controls.Add(this.buttonP1);
+            this.Controls.Add(this.buttonP4);
+            this.Controls.Add(this.buttonP3);
+            this.Controls.Add(this.buttonP2);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.buttonBaujahr);
             this.Controls.Add(this.buttonGewicht);
@@ -248,6 +309,11 @@
         private System.Windows.Forms.Button buttonGewicht;
         private System.Windows.Forms.Button buttonBaujahr;
         private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button buttonP2;
+        private System.Windows.Forms.Button buttonP3;
+        private System.Windows.Forms.Button buttonP4;
+        private System.Windows.Forms.Button buttonP1;
+        private System.Windows.Forms.Label labelOffHand;
     }
 }
 
