@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using ExcelDataReader;
+using System.Diagnostics;
 
 namespace forms_Quartett
 {
@@ -18,142 +19,288 @@ namespace forms_Quartett
         public Form1()
         {
             InitializeComponent();
+            SetCardValuesFromExcelFile("D:/Github/Quartett_Projekt/Quartett_Data/Cars.xlsx");
+            playerButton[0] = buttonP1;
+            playerButton[1] = buttonP2;
+            playerButton[2] = buttonP3;
+            playerButton[3] = buttonP4;
+
+            playerButton[0].BackColor = Color.DarkGray;
+            playerButton[1].BackColor = Color.LightGray;
+            playerButton[2].BackColor = Color.LightGray;
+            playerButton[3].BackColor = Color.LightGray;
+
+            for(int i = 0; i < player.Length; i++)
+                player[i] = new Player();
+
+            for(int i = 0; i < 32; i++)
+            {
+                int randomPlayer = rnd.Next(0, 4);
+                if (player[randomPlayer].GetAmountOfActiveCards() < 8) player[randomPlayer].AddCardAsActive(i);
+                else i--;
+            }
+
+            for (int i = 0; i < player.Length; i++)
+                player[i].SetNextCardAsActive();
+
+            SetLabelText();
         }
 
         Playcard[] playcard = new Playcard[32];
+        Player[] player = new Player[4];
         Random rnd = new Random();
+
+        Button[] playerButton = new Button[4];
 
         int category = 0, activePlayer = 0, comPlayer = 0;
 
+        
 
         private void buttonPS_Click(object sender, EventArgs e)
         {
             category = 1; //PS
+            buttonPS.BackColor = Color.DarkGray;
+            buttonKmH.BackColor = Color.LightGray;
+            buttonMaxSpd.BackColor = Color.LightGray;
+            buttonWert.BackColor = Color.LightGray;
+            buttonGewicht.BackColor = Color.LightGray;
+            buttonBaujahr.BackColor = Color.LightGray;
         }
 
         private void buttonKmH_Click(object sender, EventArgs e)
         {
-            category = 2; //KmH (0-100)
+            category = 2; //max KmH
+            buttonPS.BackColor = Color.LightGray;
+            buttonKmH.BackColor = Color.DarkGray;
+            buttonMaxSpd.BackColor = Color.LightGray;
+            buttonWert.BackColor = Color.LightGray;
+            buttonGewicht.BackColor = Color.LightGray;
+            buttonBaujahr.BackColor = Color.LightGray;
         }
 
         private void buttonMaxSpd_Click(object sender, EventArgs e)
         {
-            category = 3; //Speed
+            category = 3; //time from 0-100 Km/h
+            buttonPS.BackColor = Color.LightGray;
+            buttonKmH.BackColor = Color.LightGray;
+            buttonMaxSpd.BackColor = Color.DarkGray;
+            buttonWert.BackColor = Color.LightGray;
+            buttonGewicht.BackColor = Color.LightGray;
+            buttonBaujahr.BackColor = Color.LightGray;
         }
 
         private void buttonWert_Click(object sender, EventArgs e)
         {
             category = 4; //Wert
+            buttonPS.BackColor = Color.LightGray;
+            buttonKmH.BackColor = Color.LightGray;
+            buttonMaxSpd.BackColor = Color.LightGray;
+            buttonWert.BackColor = Color.DarkGray;
+            buttonGewicht.BackColor = Color.LightGray;
+            buttonBaujahr.BackColor = Color.LightGray;
         }
 
         private void buttonGewicht_Click(object sender, EventArgs e)
         {
             category = 5; //Gewicht
+            buttonPS.BackColor = Color.LightGray;
+            buttonKmH.BackColor = Color.LightGray;
+            buttonMaxSpd.BackColor = Color.LightGray;
+            buttonWert.BackColor = Color.LightGray;
+            buttonGewicht.BackColor = Color.DarkGray;
+            buttonBaujahr.BackColor = Color.LightGray;
         }
 
         private void buttonBaujahr_Click(object sender, EventArgs e)
         {
             category = 6; //Baujahr
+            buttonPS.BackColor = Color.LightGray;
+            buttonKmH.BackColor = Color.LightGray;
+            buttonMaxSpd.BackColor = Color.LightGray;
+            buttonWert.BackColor = Color.LightGray;
+            buttonGewicht.BackColor = Color.LightGray;
+            buttonBaujahr.BackColor = Color.DarkGray;
         }
 
         private void buttonP1_Click(object sender, EventArgs e)
         {
-            comPlayer = 1;
+            comPlayer = 0; //Spieler 1
         }
 
         private void buttonP2_Click(object sender, EventArgs e)
         {
-            comPlayer= 2;
+            comPlayer= 1; //Spieler 2
         }
 
         private void buttonP3_Click(object sender, EventArgs e)
         {
-            comPlayer= 3;
+            comPlayer= 2; //Spieler 3
         }
 
         private void buttonP4_Click(object sender, EventArgs e)
         {
-            comPlayer= 4;
+            comPlayer= 3; //Spieler 4
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            if (activePlayer == comPlayer) ErrorSamePlayer();
+
             switch (category)
             {
                 case 1:
-                    if (playcard[activePlayer].ps > playcard[comPlayer].ps)
+                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps)
                     {
                         buttonStart.BackColor = Color.LightGreen;
-                    }else if(playcard[activePlayer].ps <= playcard[comPlayer].ps)
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                    }
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                         activePlayer = comPlayer;
                     }
                     break;
 
                 
                 case 2:
-                    if (playcard[activePlayer].kmh > playcard[comPlayer].kmh)
+                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh)
                     {
                         buttonStart.BackColor = Color.LightGreen;
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                     }
-                    else if (playcard[activePlayer].kmh <= playcard[comPlayer].kmh)
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                        activePlayer = comPlayer;
                     }
                     break;
 
 
                 case 3:
-                    if (playcard[activePlayer].speed > playcard[comPlayer].speed)
+                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed)
                     {
                         buttonStart.BackColor = Color.LightGreen;
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                     }
-                    else if (playcard[activePlayer].speed <= playcard[comPlayer].speed)
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                        activePlayer = comPlayer;
                     }
                     break;
 
 
                 case 4:
-                    if (playcard[activePlayer].value > playcard[comPlayer].value)
+                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value)
                     {
                         buttonStart.BackColor = Color.LightGreen;
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                     }
-                    else if (playcard[activePlayer].value <= playcard[comPlayer].value)
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                        activePlayer = comPlayer;
                     }
                     break;
 
 
                 case 5:
-                    if (playcard[activePlayer].weight > playcard[comPlayer].weight)
+                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight)
                     {
                         buttonStart.BackColor = Color.LightGreen;
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                     }
-                    else if (playcard[activePlayer].weight <= playcard[comPlayer].weight)
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                        activePlayer = comPlayer;
                     }
                     break;
 
 
                 case 6:
-                    if (playcard[activePlayer].baujahr > playcard[comPlayer].baujahr)
+                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr)
                     {
                         buttonStart.BackColor = Color.LightGreen;
+                        player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
                     }
-                    else if (playcard[activePlayer].baujahr <= playcard[comPlayer].baujahr)
+                    else
                     {
+                        playerButton[activePlayer].BackColor = Color.LightGray;
+                        playerButton[comPlayer].BackColor = Color.DarkGray;
                         buttonStart.BackColor = Color.Red;
+                        player[comPlayer].AddCardAsPassive(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
+                        player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
+                        player[comPlayer].SetNextCardAsActive();
+                        player[activePlayer].SetNextCardAsActive();
+                        activePlayer = comPlayer;
                     }
                     break;
             }
+            SetLabelText();
         }
 
-        void ExcelFileReader(string filePath)
+        void SetCardValuesFromExcelFile(string filePath)
         {
             string[] name = new string[32];
             int[] ps = new int[32];
@@ -184,29 +331,45 @@ namespace forms_Quartett
 
             for (int i = 0; i < ps.Length; i++)
             {
-                name[i] = Convert.ToString(result.Tables[0].Rows[i][0]);
-                ps[i] = Convert.ToInt32(result.Tables[0].Rows[i][1]);
-                kmh[i] = Convert.ToInt32(result.Tables[0].Rows[i][2]);
-                speed[i] = Convert.ToInt32(result.Tables[0].Rows[i][3]);
-                value[i] = Convert.ToInt32(result.Tables[0].Rows[i][4]);
-                weight[i] = Convert.ToInt32(result.Tables[0].Rows[i][5]);
-                baujahr[i] = Convert.ToInt32(result.Tables[0].Rows[i][6]);
+                name[i] = Convert.ToString(result.Tables[0].Rows[i + 1][0]);
+                ps[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][1]);
+                kmh[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][2]);
+                speed[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][3]);
+                value[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][4]);
+                weight[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][5]);
+                baujahr[i] = Convert.ToInt32(result.Tables[0].Rows[i + 1][6]);
 
-                playcard[i] = new Playcard(name[i], ps[i], kmh[i], speed[i], value[i], weight[i], baujahr[i]);
+                playcard[i] = new Playcard(name[i], ps[i], kmh[i], speed[i], value[i], weight[i], baujahr[i], i);
             }
         }
 
 
         private void ErrorSamePlayer()
         {
-            string message = "You cannot choose yourself. A random Player will be choosen for you.";
-            string caption = "Fatal Error";
+            string message = "You cannot play yourself. A random Player will be choosen for you.";
+            string caption = "Braindead Player Detected";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
 
             result = MessageBox.Show(message, caption, buttons);
 
             while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 5);
+        }
+
+        private void SetLabelText()
+        {
+            labelCarName.Text = $"{playcard[player[activePlayer].currentActiveCard].name}";
+            labelPS.Text = $"{playcard[player[activePlayer].currentActiveCard].ps} ps";
+            labelMaxSpd.Text = $"{playcard[player[activePlayer].currentActiveCard].speed} Sec";
+            labelGewicht.Text = $"{playcard[player[activePlayer].currentActiveCard].weight} Kg";
+            labelKmH.Text = $"{playcard[player[activePlayer].currentActiveCard].kmh} Km/h";
+            labelWert.Text = $"{playcard[player[activePlayer].currentActiveCard].value} €";
+            labelBaujahr.Text = $"{playcard[player[activePlayer].currentActiveCard].baujahr}";
+
+            labelActiveHand.Text = player[activePlayer].GetAmountOfActiveCards().ToString();
+            labelOffHand.Text = player[activePlayer].GetAmountOfPassiveCards().ToString();
+
+            labelPlayer.Text = $"Player {activePlayer+1}";
         }
     }
 }

@@ -15,3 +15,4 @@ D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CoreCo
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CopyComplete
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.exe
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.pdb
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.Form1.resources

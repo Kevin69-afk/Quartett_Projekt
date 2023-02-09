@@ -15,8 +15,9 @@ namespace forms_Quartett
         public int value;
         public int weight;
         public int baujahr;
+        public int cardIndex;
 
-        public Playcard(string name, int ps, int kmh, int speed, int value, int weight, int baujahr)
+        public Playcard(string name, int ps, int kmh, int speed, int value, int weight, int baujahr, int cardIndex)
         {
             this.name = name;
             this.ps = ps;
@@ -25,6 +26,7 @@ namespace forms_Quartett
             this.value = value;
             this.weight = weight;
             this.baujahr = baujahr;
+            this.cardIndex = cardIndex;
         }
     }
 }

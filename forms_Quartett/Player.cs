@@ -11,6 +11,7 @@ namespace forms_Quartett
         bool[] hasCard = new bool[32];
         bool[] cardIsPassive = new bool[32];
         bool[] cardIsActive = new bool[32];
+        public int currentActiveCard = 0;
 
         public void AddCardAsPassive(int currentCard)
         {
@@ -24,6 +25,23 @@ namespace forms_Quartett
             hasCard[currentCard] = true;
             cardIsPassive[currentCard] = false;
             cardIsActive[currentCard] = true;
+        }
+
+        public void SetNextCardAsActive()
+        {
+            if (GetAmountOfTotalCards() > 0) 
+            {
+                for (int i = currentActiveCard; i < 33; i++)
+                {
+                    if (i == 32) i = 0;
+
+                    if (hasCard[i])
+                    {
+                        currentActiveCard = i;
+                        return;
+                    }
+                }
+            }
         }
 
         public void RemoveCard(int currentCard)

@@ -48,15 +48,18 @@
             this.buttonP4 = new System.Windows.Forms.Button();
             this.buttonP1 = new System.Windows.Forms.Button();
             this.labelOffHand = new System.Windows.Forms.Label();
+            this.labelOffHandHeader = new System.Windows.Forms.Label();
+            this.labelActiveHandHeader = new System.Windows.Forms.Label();
+            this.labelActiveHand = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelPlayer
             // 
             this.labelPlayer.BackColor = System.Drawing.SystemColors.ControlDark;
             this.labelPlayer.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPlayer.Location = new System.Drawing.Point(12, 9);
+            this.labelPlayer.Location = new System.Drawing.Point(11, 7);
             this.labelPlayer.Name = "labelPlayer";
-            this.labelPlayer.Size = new System.Drawing.Size(551, 50);
+            this.labelPlayer.Size = new System.Drawing.Size(490, 40);
             this.labelPlayer.TabIndex = 6;
             this.labelPlayer.Text = "Player";
             this.labelPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,10 +67,10 @@
             // labelPS
             // 
             this.labelPS.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelPS.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPS.Location = new System.Drawing.Point(142, 164);
+            this.labelPS.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelPS.Location = new System.Drawing.Point(127, 109);
             this.labelPS.Name = "labelPS";
-            this.labelPS.Size = new System.Drawing.Size(145, 50);
+            this.labelPS.Size = new System.Drawing.Size(160, 28);
             this.labelPS.TabIndex = 7;
             this.labelPS.Text = "PS";
             this.labelPS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,10 +78,10 @@
             // labelMaxSpd
             // 
             this.labelMaxSpd.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelMaxSpd.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaxSpd.Location = new System.Drawing.Point(142, 229);
+            this.labelMaxSpd.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelMaxSpd.Location = new System.Drawing.Point(127, 181);
             this.labelMaxSpd.Name = "labelMaxSpd";
-            this.labelMaxSpd.Size = new System.Drawing.Size(145, 50);
+            this.labelMaxSpd.Size = new System.Drawing.Size(160, 28);
             this.labelMaxSpd.TabIndex = 8;
             this.labelMaxSpd.Text = "MaxSpd";
             this.labelMaxSpd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,10 +89,10 @@
             // labelGewicht
             // 
             this.labelGewicht.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelGewicht.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGewicht.Location = new System.Drawing.Point(142, 294);
+            this.labelGewicht.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelGewicht.Location = new System.Drawing.Point(127, 253);
             this.labelGewicht.Name = "labelGewicht";
-            this.labelGewicht.Size = new System.Drawing.Size(145, 50);
+            this.labelGewicht.Size = new System.Drawing.Size(160, 28);
             this.labelGewicht.TabIndex = 9;
             this.labelGewicht.Text = "Gewicht";
             this.labelGewicht.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,10 +100,10 @@
             // labelWert
             // 
             this.labelWert.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelWert.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWert.Location = new System.Drawing.Point(293, 229);
+            this.labelWert.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelWert.Location = new System.Drawing.Point(127, 217);
             this.labelWert.Name = "labelWert";
-            this.labelWert.Size = new System.Drawing.Size(145, 50);
+            this.labelWert.Size = new System.Drawing.Size(160, 28);
             this.labelWert.TabIndex = 10;
             this.labelWert.Text = "Wert";
             this.labelWert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -108,10 +111,10 @@
             // labelBaujahr
             // 
             this.labelBaujahr.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelBaujahr.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBaujahr.Location = new System.Drawing.Point(293, 294);
+            this.labelBaujahr.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelBaujahr.Location = new System.Drawing.Point(127, 289);
             this.labelBaujahr.Name = "labelBaujahr";
-            this.labelBaujahr.Size = new System.Drawing.Size(145, 50);
+            this.labelBaujahr.Size = new System.Drawing.Size(160, 28);
             this.labelBaujahr.TabIndex = 11;
             this.labelBaujahr.Text = "Baujahr";
             this.labelBaujahr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,10 +122,10 @@
             // labelKmH
             // 
             this.labelKmH.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.labelKmH.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKmH.Location = new System.Drawing.Point(293, 164);
+            this.labelKmH.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelKmH.Location = new System.Drawing.Point(127, 145);
             this.labelKmH.Name = "labelKmH";
-            this.labelKmH.Size = new System.Drawing.Size(145, 50);
+            this.labelKmH.Size = new System.Drawing.Size(160, 28);
             this.labelKmH.TabIndex = 12;
             this.labelKmH.Text = "Km/h";
             this.labelKmH.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -131,18 +134,19 @@
             // 
             this.labelCarName.BackColor = System.Drawing.SystemColors.ControlDark;
             this.labelCarName.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCarName.Location = new System.Drawing.Point(140, 87);
+            this.labelCarName.Location = new System.Drawing.Point(12, 58);
             this.labelCarName.Name = "labelCarName";
-            this.labelCarName.Size = new System.Drawing.Size(296, 50);
+            this.labelCarName.Size = new System.Drawing.Size(370, 40);
             this.labelCarName.TabIndex = 13;
             this.labelCarName.Text = "CarName";
             this.labelCarName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonPS
             // 
-            this.buttonPS.Location = new System.Drawing.Point(12, 87);
+            this.buttonPS.Location = new System.Drawing.Point(12, 109);
+            this.buttonPS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPS.Name = "buttonPS";
-            this.buttonPS.Size = new System.Drawing.Size(100, 35);
+            this.buttonPS.Size = new System.Drawing.Size(89, 28);
             this.buttonPS.TabIndex = 14;
             this.buttonPS.Text = "PS";
             this.buttonPS.UseVisualStyleBackColor = true;
@@ -150,9 +154,10 @@
             // 
             // buttonKmH
             // 
-            this.buttonKmH.Location = new System.Drawing.Point(12, 132);
+            this.buttonKmH.Location = new System.Drawing.Point(12, 145);
+            this.buttonKmH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonKmH.Name = "buttonKmH";
-            this.buttonKmH.Size = new System.Drawing.Size(100, 35);
+            this.buttonKmH.Size = new System.Drawing.Size(89, 28);
             this.buttonKmH.TabIndex = 15;
             this.buttonKmH.Text = "Km/h";
             this.buttonKmH.UseVisualStyleBackColor = true;
@@ -160,9 +165,10 @@
             // 
             // buttonMaxSpd
             // 
-            this.buttonMaxSpd.Location = new System.Drawing.Point(12, 177);
+            this.buttonMaxSpd.Location = new System.Drawing.Point(12, 181);
+            this.buttonMaxSpd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMaxSpd.Name = "buttonMaxSpd";
-            this.buttonMaxSpd.Size = new System.Drawing.Size(100, 35);
+            this.buttonMaxSpd.Size = new System.Drawing.Size(89, 28);
             this.buttonMaxSpd.TabIndex = 16;
             this.buttonMaxSpd.Text = "MaxSpd";
             this.buttonMaxSpd.UseVisualStyleBackColor = true;
@@ -170,9 +176,10 @@
             // 
             // buttonWert
             // 
-            this.buttonWert.Location = new System.Drawing.Point(12, 222);
+            this.buttonWert.Location = new System.Drawing.Point(12, 217);
+            this.buttonWert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonWert.Name = "buttonWert";
-            this.buttonWert.Size = new System.Drawing.Size(100, 35);
+            this.buttonWert.Size = new System.Drawing.Size(89, 28);
             this.buttonWert.TabIndex = 17;
             this.buttonWert.Text = "€";
             this.buttonWert.UseVisualStyleBackColor = true;
@@ -180,9 +187,10 @@
             // 
             // buttonGewicht
             // 
-            this.buttonGewicht.Location = new System.Drawing.Point(11, 267);
+            this.buttonGewicht.Location = new System.Drawing.Point(11, 253);
+            this.buttonGewicht.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGewicht.Name = "buttonGewicht";
-            this.buttonGewicht.Size = new System.Drawing.Size(100, 35);
+            this.buttonGewicht.Size = new System.Drawing.Size(89, 28);
             this.buttonGewicht.TabIndex = 18;
             this.buttonGewicht.Text = "Gewicht";
             this.buttonGewicht.UseVisualStyleBackColor = true;
@@ -190,9 +198,10 @@
             // 
             // buttonBaujahr
             // 
-            this.buttonBaujahr.Location = new System.Drawing.Point(12, 312);
+            this.buttonBaujahr.Location = new System.Drawing.Point(12, 289);
+            this.buttonBaujahr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBaujahr.Name = "buttonBaujahr";
-            this.buttonBaujahr.Size = new System.Drawing.Size(100, 35);
+            this.buttonBaujahr.Size = new System.Drawing.Size(89, 28);
             this.buttonBaujahr.TabIndex = 19;
             this.buttonBaujahr.Text = "Baujahr";
             this.buttonBaujahr.UseVisualStyleBackColor = true;
@@ -201,10 +210,11 @@
             // buttonStart
             // 
             this.buttonStart.Font = new System.Drawing.Font("Arial Black", 17F, System.Drawing.FontStyle.Bold);
-            this.buttonStart.Location = new System.Drawing.Point(463, 87);
+            this.buttonStart.Location = new System.Drawing.Point(293, 109);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonStart.Size = new System.Drawing.Size(100, 260);
+            this.buttonStart.Size = new System.Drawing.Size(89, 208);
             this.buttonStart.TabIndex = 20;
             this.buttonStart.Text = "S\r\nT\r\nA\r\nR\r\nT";
             this.buttonStart.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -213,9 +223,10 @@
             // 
             // buttonP2
             // 
-            this.buttonP2.Location = new System.Drawing.Point(126, 353);
+            this.buttonP2.Location = new System.Drawing.Point(105, 321);
+            this.buttonP2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonP2.Name = "buttonP2";
-            this.buttonP2.Size = new System.Drawing.Size(100, 70);
+            this.buttonP2.Size = new System.Drawing.Size(89, 56);
             this.buttonP2.TabIndex = 21;
             this.buttonP2.Text = "Player 2";
             this.buttonP2.UseVisualStyleBackColor = true;
@@ -223,9 +234,10 @@
             // 
             // buttonP3
             // 
-            this.buttonP3.Location = new System.Drawing.Point(232, 353);
+            this.buttonP3.Location = new System.Drawing.Point(199, 321);
+            this.buttonP3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonP3.Name = "buttonP3";
-            this.buttonP3.Size = new System.Drawing.Size(100, 70);
+            this.buttonP3.Size = new System.Drawing.Size(89, 56);
             this.buttonP3.TabIndex = 22;
             this.buttonP3.Text = "Player 3";
             this.buttonP3.UseVisualStyleBackColor = true;
@@ -233,9 +245,10 @@
             // 
             // buttonP4
             // 
-            this.buttonP4.Location = new System.Drawing.Point(338, 353);
+            this.buttonP4.Location = new System.Drawing.Point(293, 321);
+            this.buttonP4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonP4.Name = "buttonP4";
-            this.buttonP4.Size = new System.Drawing.Size(100, 70);
+            this.buttonP4.Size = new System.Drawing.Size(89, 56);
             this.buttonP4.TabIndex = 23;
             this.buttonP4.Text = "Player 4";
             this.buttonP4.UseVisualStyleBackColor = true;
@@ -243,9 +256,10 @@
             // 
             // buttonP1
             // 
-            this.buttonP1.Location = new System.Drawing.Point(20, 353);
+            this.buttonP1.Location = new System.Drawing.Point(11, 321);
+            this.buttonP1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonP1.Name = "buttonP1";
-            this.buttonP1.Size = new System.Drawing.Size(100, 70);
+            this.buttonP1.Size = new System.Drawing.Size(89, 56);
             this.buttonP1.TabIndex = 24;
             this.buttonP1.Text = "Player 1";
             this.buttonP1.UseVisualStyleBackColor = true;
@@ -255,18 +269,54 @@
             // 
             this.labelOffHand.BackColor = System.Drawing.SystemColors.ControlDark;
             this.labelOffHand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOffHand.Location = new System.Drawing.Point(444, 353);
+            this.labelOffHand.Location = new System.Drawing.Point(388, 321);
             this.labelOffHand.Name = "labelOffHand";
-            this.labelOffHand.Size = new System.Drawing.Size(119, 70);
+            this.labelOffHand.Size = new System.Drawing.Size(113, 56);
             this.labelOffHand.TabIndex = 25;
             this.labelOffHand.Text = "Off-Hand";
             this.labelOffHand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelOffHandHeader
+            // 
+            this.labelOffHandHeader.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.labelOffHandHeader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOffHandHeader.Location = new System.Drawing.Point(388, 289);
+            this.labelOffHandHeader.Name = "labelOffHandHeader";
+            this.labelOffHandHeader.Size = new System.Drawing.Size(113, 28);
+            this.labelOffHandHeader.TabIndex = 26;
+            this.labelOffHandHeader.Text = "Off-Hand";
+            this.labelOffHandHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelActiveHandHeader
+            // 
+            this.labelActiveHandHeader.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.labelActiveHandHeader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActiveHandHeader.Location = new System.Drawing.Point(388, 181);
+            this.labelActiveHandHeader.Name = "labelActiveHandHeader";
+            this.labelActiveHandHeader.Size = new System.Drawing.Size(113, 28);
+            this.labelActiveHandHeader.TabIndex = 28;
+            this.labelActiveHandHeader.Text = "On-Hand";
+            this.labelActiveHandHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelActiveHand
+            // 
+            this.labelActiveHand.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.labelActiveHand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActiveHand.Location = new System.Drawing.Point(388, 213);
+            this.labelActiveHand.Name = "labelActiveHand";
+            this.labelActiveHand.Size = new System.Drawing.Size(113, 56);
+            this.labelActiveHand.TabIndex = 27;
+            this.labelActiveHand.Text = "On-Hand";
+            this.labelActiveHand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 435);
+            this.ClientSize = new System.Drawing.Size(510, 383);
+            this.Controls.Add(this.labelActiveHandHeader);
+            this.Controls.Add(this.labelActiveHand);
+            this.Controls.Add(this.labelOffHandHeader);
             this.Controls.Add(this.labelOffHand);
             this.Controls.Add(this.buttonP1);
             this.Controls.Add(this.buttonP4);
@@ -287,6 +337,7 @@
             this.Controls.Add(this.labelMaxSpd);
             this.Controls.Add(this.labelPS);
             this.Controls.Add(this.labelPlayer);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -314,6 +365,9 @@
         private System.Windows.Forms.Button buttonP4;
         private System.Windows.Forms.Button buttonP1;
         private System.Windows.Forms.Label labelOffHand;
+        private System.Windows.Forms.Label labelOffHandHeader;
+        private System.Windows.Forms.Label labelActiveHandHeader;
+        private System.Windows.Forms.Label labelActiveHand;
     }
 }
 
