@@ -20,12 +20,12 @@ namespace forms_Quartett
         {
             InitializeComponent();
             SetCardValuesFromExcelFile("D:/Github/Quartett_Projekt/Quartett_Data/Cars.xlsx");
-            playerButton[0] = buttonP1;
+            playerButton[0] = buttonP1;//Die buttons sollen für alle Spieler angezeigt werden
             playerButton[1] = buttonP2;
             playerButton[2] = buttonP3;
             playerButton[3] = buttonP4;
 
-            playerButton[0].BackColor = Color.DarkGray;
+            playerButton[0].BackColor = Color.DarkGray;//Farben der Karten der Spieler bestimmen
             playerButton[1].BackColor = Color.LightGray;
             playerButton[2].BackColor = Color.LightGray;
             playerButton[3].BackColor = Color.LightGray;
@@ -144,8 +144,8 @@ namespace forms_Quartett
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            if (activePlayer == comPlayer) ErrorSamePlayer();
-
+            if (activePlayer == comPlayer) ErrorSamePlayer(); //Die Karten mit dem jeweiligen ausgewählten Wert die ausgewählt wurden, sollen mit denen der anderen Spieler verglichen werden. 
+            // Dannach soll der nächst Spieler der aktive Spieler sein.
             switch (category)
             {
                 case 1:
@@ -301,7 +301,7 @@ namespace forms_Quartett
         }
 
         void SetCardValuesFromExcelFile(string filePath)
-        {
+        { // Kartenwerte aus einer Excel Datei festlegen.
             string[] name = new string[32];
             int[] ps = new int[32];
             int[] kmh = new int[32];
@@ -345,7 +345,7 @@ namespace forms_Quartett
 
 
         private void ErrorSamePlayer()
-        {
+        {   //Wenn man mit sich selbst spielen will, soll ein anderer Spieler für einen ausgewählt werden
             string message = "You cannot play yourself. A random Player will be choosen for you.";
             string caption = "Braindead Player Detected";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -357,7 +357,7 @@ namespace forms_Quartett
         }
 
         private void SetLabelText()
-        {
+        {   // Die Werte die ausgewählt wurden, sollen auf den Labels erscheinen
             labelCarName.Text = $"{playcard[player[activePlayer].currentActiveCard].name}";
             labelPS.Text = $"{playcard[player[activePlayer].currentActiveCard].ps} ps";
             labelMaxSpd.Text = $"{playcard[player[activePlayer].currentActiveCard].speed} Sec";
