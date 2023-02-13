@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace forms_Quartett
 {
     internal class Playcard
-    {
+    {//Eigenschaften der Karten 
         public string name;
         public int ps;
         public int kmh;
@@ -17,7 +17,7 @@ namespace forms_Quartett
         public int baujahr;
         public int cardIndex;
 
-        public Playcard(string name, int ps, int kmh, int speed, int value, int weight, int baujahr, int cardIndex)
+        public Playcard(string name, int ps, int kmh, int speed, int value, int weight, int baujahr, int cardIndex) // Erstellung des Konstruktors
         {
             this.name = name;
             this.ps = ps;
