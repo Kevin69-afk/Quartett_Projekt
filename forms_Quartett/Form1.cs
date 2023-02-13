@@ -146,6 +146,8 @@ namespace forms_Quartett
         {
             if (activePlayer == comPlayer) ErrorSamePlayer();
 
+            Console.WriteLine($"Active Player {activePlayer}\n Com Player {comPlayer}");
+
             switch (category)
             {
                 case 1:
@@ -199,7 +201,7 @@ namespace forms_Quartett
 
 
                 case 3:
-                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed)
+                    if (playcard[player[activePlayer].currentActiveCard].speed < playcard[player[comPlayer].currentActiveCard].speed)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -249,7 +251,7 @@ namespace forms_Quartett
 
 
                 case 5:
-                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight)
+                    if (playcard[player[activePlayer].currentActiveCard].weight < playcard[player[comPlayer].currentActiveCard].weight)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -353,7 +355,7 @@ namespace forms_Quartett
 
             result = MessageBox.Show(message, caption, buttons);
 
-            while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 5);
+            while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 4);
         }
 
         private void SetLabelText()
