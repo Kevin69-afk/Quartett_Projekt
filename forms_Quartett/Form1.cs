@@ -125,21 +125,41 @@ namespace forms_Quartett
         private void buttonP1_Click(object sender, EventArgs e)
         {
             comPlayer = 0; //Spieler 1
+            buttonP1.BackColor = Color.DarkGray;
+            buttonP2.BackColor = Color.LightGray;
+            buttonP3.BackColor = Color.LightGray;
+            buttonP4.BackColor = Color.LightGray;
+            playerButton[activePlayer].BackColor = Color.WhiteSmoke;
         }
 
         private void buttonP2_Click(object sender, EventArgs e)
         {
             comPlayer= 1; //Spieler 2
+            buttonP1.BackColor = Color.LightGray;
+            buttonP2.BackColor = Color.DarkGray;
+            buttonP3.BackColor = Color.LightGray;
+            buttonP4.BackColor = Color.LightGray;
+            playerButton[activePlayer].BackColor = Color.WhiteSmoke;
         }
 
         private void buttonP3_Click(object sender, EventArgs e)
         {
             comPlayer= 2; //Spieler 3
+            buttonP1.BackColor = Color.LightGray;
+            buttonP2.BackColor = Color.LightGray;
+            buttonP3.BackColor = Color.DarkGray;
+            buttonP4.BackColor = Color.LightGray;
+            playerButton[activePlayer].BackColor = Color.WhiteSmoke;
         }
 
         private void buttonP4_Click(object sender, EventArgs e)
         {
             comPlayer= 3; //Spieler 4
+            buttonP1.BackColor = Color.LightGray;
+            buttonP2.BackColor = Color.LightGray;
+            buttonP3.BackColor = Color.LightGray;
+            buttonP4.BackColor = Color.DarkGray;
+            playerButton[activePlayer].BackColor = Color.WhiteSmoke;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -159,6 +179,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -170,6 +191,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -184,6 +206,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -195,6 +218,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -209,6 +233,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -220,6 +245,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -234,6 +260,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -245,6 +272,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -259,6 +287,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -270,6 +299,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -284,6 +314,7 @@ namespace forms_Quartett
                         player[comPlayer].RemoveCard(playcard[player[comPlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                     }
                     else
                     {
@@ -295,6 +326,7 @@ namespace forms_Quartett
                         player[activePlayer].RemoveCard(playcard[player[activePlayer].currentActiveCard].cardIndex);
                         player[comPlayer].SetNextCardAsActive();
                         player[activePlayer].SetNextCardAsActive();
+                        ResetCardsToActive();
                         activePlayer = comPlayer;
                     }
                     break;
@@ -355,12 +387,12 @@ namespace forms_Quartett
 
             result = MessageBox.Show(message, caption, buttons);
 
-            while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 4);
+            while (activePlayer == comPlayer) comPlayer = rnd.Next(0, 4);
         }
 
         private void SetLabelText()
         {
-            labelCarName.Text = $"{playcard[player[activePlayer].currentActiveCard].name}";
+            labelCarName.Text = $"Audi {playcard[player[activePlayer].currentActiveCard].name}";
             labelPS.Text = $"{playcard[player[activePlayer].currentActiveCard].ps} ps";
             labelMaxSpd.Text = $"{playcard[player[activePlayer].currentActiveCard].speed} Sec";
             labelGewicht.Text = $"{playcard[player[activePlayer].currentActiveCard].weight} Kg";
@@ -372,6 +404,19 @@ namespace forms_Quartett
             labelOffHand.Text = player[activePlayer].GetAmountOfPassiveCards().ToString();
 
             labelPlayer.Text = $"Player {activePlayer+1}";
+        }
+
+        private void ResetCardsToActive()
+        {
+            if (player[activePlayer].GetAmountOfActiveCards() == 0)
+            {
+                player[activePlayer].SetAllCardsToActive();
+            }
+
+            if (player[comPlayer].GetAmountOfActiveCards() == 0)
+            {
+                player[comPlayer].SetAllCardsToActive();
+            }
         }
     }
 }

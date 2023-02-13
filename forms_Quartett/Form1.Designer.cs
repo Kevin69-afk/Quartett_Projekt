@@ -215,7 +215,7 @@
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.buttonStart.Size = new System.Drawing.Size(89, 208);
-            this.buttonStart.TabIndex = 20;
+            this.buttonStart.TabIndex = 24;
             this.buttonStart.Text = "S\r\nT\r\nA\r\nR\r\nT";
             this.buttonStart.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -260,7 +260,7 @@
             this.buttonP1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(89, 56);
-            this.buttonP1.TabIndex = 24;
+            this.buttonP1.TabIndex = 20;
             this.buttonP1.Text = "Player 1";
             this.buttonP1.UseVisualStyleBackColor = true;
             this.buttonP1.Click += new System.EventHandler(this.buttonP1_Click);
