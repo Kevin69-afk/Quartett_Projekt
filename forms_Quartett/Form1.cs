@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExcelDataReader;
 using System.Diagnostics;
+using System.Web;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace forms_Quartett
 {
@@ -147,10 +149,12 @@ namespace forms_Quartett
         {
             if (activePlayer == comPlayer) ErrorSamePlayer(); //Die Karten mit dem jeweiligen ausgewählten Wert die ausgewählt wurden, sollen mit denen der anderen Spieler verglichen werden. 
             // Dannach soll der nächst Spieler der aktive Spieler sein.
+
+            if (alive[activePlayer] == false || alive[comPlayer] == false) ErrorDeadPlayer();
             switch (category)
             {
                 case 1:
-                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -175,7 +179,7 @@ namespace forms_Quartett
 
                 
                 case 2:
-                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -200,7 +204,7 @@ namespace forms_Quartett
 
 
                 case 3:
-                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -225,7 +229,7 @@ namespace forms_Quartett
 
 
                 case 4:
-                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -250,7 +254,7 @@ namespace forms_Quartett
 
 
                 case 5:
-                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -275,7 +279,7 @@ namespace forms_Quartett
 
 
                 case 6:
-                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -299,6 +303,7 @@ namespace forms_Quartett
                     break;
             }
             SetLabelText();
+            KillPlayer();
         }
 
         void SetCardValuesFromExcelFile(string filePath)
@@ -354,7 +359,32 @@ namespace forms_Quartett
 
             result = MessageBox.Show(message, caption, buttons);
 
-            while (activePlayer == comPlayer) comPlayer = rnd.Next(1, 5);
+            while (activePlayer == comPlayer) comPlayer = rnd.Next(0, 4);
+        }
+
+        private void ErrorDeadPlayer()
+        {
+            string message = "";
+            string caption = "";
+
+            if (!alive[activePlayer])
+            {
+                 message = "You cannot play, when you're dead.";
+                 caption = "You're dead.";
+
+                while (!alive[activePlayer]) activePlayer= rnd.Next(0, 4);
+            }else if (!alive[comPlayer])
+            {
+                 message = "You cannot play against a dead enemy.";
+                 caption = "Dead Enemy";
+
+                while (!alive[comPlayer]) comPlayer = rnd.Next(0, 4);
+            }
+
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
         }
 
         private void SetLabelText()
@@ -376,20 +406,12 @@ namespace forms_Quartett
 
         private void KillPlayer()
         {
-            if (player[activePlayer].GetAmountOfTotalCards() != 0)
-            {
-                alive[activePlayer] = true;
-            }
-            else
+            if (player[activePlayer].GetAmountOfTotalCards() == 0)
             {
                 alive[activePlayer] = false;
             }
 
-            if (player[comPlayer].GetAmountOfTotalCards() != 0)
-            {
-                alive[comPlayer] = true;
-            }
-            else
+            if (player[comPlayer].GetAmountOfTotalCards() == 0)
             {
                 alive[comPlayer] = false;
             }
