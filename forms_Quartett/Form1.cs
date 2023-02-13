@@ -44,6 +44,8 @@ namespace forms_Quartett
                 player[i].SetNextCardAsActive();
 
             SetLabelText();
+
+            for (int i = 0; i < alive.Length; i++) alive[i] = true;
         }
 
         Playcard[] playcard = new Playcard[32];
@@ -172,7 +174,7 @@ namespace forms_Quartett
             switch (category)
             {
                 case 1:
-                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -199,7 +201,7 @@ namespace forms_Quartett
 
                 
                 case 2:
-                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -226,7 +228,7 @@ namespace forms_Quartett
 
 
                 case 3:
-                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -253,7 +255,7 @@ namespace forms_Quartett
 
 
                 case 4:
-                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -280,7 +282,7 @@ namespace forms_Quartett
 
 
                 case 5:
-                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -307,7 +309,7 @@ namespace forms_Quartett
 
 
                 case 6:
-                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr && alive[activePlayer] == true && alive[comPlayer] == true)
+                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -418,6 +420,7 @@ namespace forms_Quartett
             {
                 player[comPlayer].SetAllCardsToActive();
             }
+        }
 
         private void KillPlayer()
         {
