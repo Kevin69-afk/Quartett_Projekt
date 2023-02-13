@@ -53,6 +53,7 @@ namespace forms_Quartett
         Button[] playerButton = new Button[4];
 
         int category = 0, activePlayer = 0, comPlayer = 0;
+        bool[] alive = new bool[4];
 
         
 
@@ -149,7 +150,7 @@ namespace forms_Quartett
             switch (category)
             {
                 case 1:
-                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps)
+                    if (playcard[player[activePlayer].currentActiveCard].ps > playcard[player[comPlayer].currentActiveCard].ps && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -174,7 +175,7 @@ namespace forms_Quartett
 
                 
                 case 2:
-                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh)
+                    if (playcard[player[activePlayer].currentActiveCard].kmh > playcard[player[comPlayer].currentActiveCard].kmh && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -199,7 +200,7 @@ namespace forms_Quartett
 
 
                 case 3:
-                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed)
+                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -224,7 +225,7 @@ namespace forms_Quartett
 
 
                 case 4:
-                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value)
+                    if (playcard[player[activePlayer].currentActiveCard].value > playcard[player[comPlayer].currentActiveCard].value && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -249,7 +250,7 @@ namespace forms_Quartett
 
 
                 case 5:
-                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight)
+                    if (playcard[player[activePlayer].currentActiveCard].weight > playcard[player[comPlayer].currentActiveCard].weight && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -274,7 +275,7 @@ namespace forms_Quartett
 
 
                 case 6:
-                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr)
+                    if (playcard[player[activePlayer].currentActiveCard].baujahr > playcard[player[comPlayer].currentActiveCard].baujahr && alive[activePlayer] == true && alive[comPlayer] == true)
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -370,6 +371,29 @@ namespace forms_Quartett
             labelOffHand.Text = player[activePlayer].GetAmountOfPassiveCards().ToString();
 
             labelPlayer.Text = $"Player {activePlayer+1}";
+        }
+
+
+        private void KillPlayer()
+        {
+            if (player[activePlayer].GetAmountOfTotalCards() != 0)
+            {
+                alive[activePlayer] = true;
+            }
+            else
+            {
+                alive[activePlayer] = false;
+            }
+
+            if (player[comPlayer].GetAmountOfTotalCards() != 0)
+            {
+                alive[comPlayer] = true;
+            }
+            else
+            {
+                alive[comPlayer] = false;
+            }
+
         }
     }
 }
