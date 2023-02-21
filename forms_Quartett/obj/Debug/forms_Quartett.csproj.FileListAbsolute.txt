@@ -15,7 +15,6 @@ D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CoreCo
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.csproj.CopyComplete
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.exe
 D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.pdb
-D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.Form1.resources
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\bin\Debug\forms_Quartett.exe.config
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\bin\Debug\forms_Quartett.exe
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\bin\Debug\forms_Quartett.pdb
@@ -34,3 +33,4 @@ C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\obj\Debug\forms_Qua
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\obj\Debug\forms_Quartett.csproj.CopyComplete
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\obj\Debug\forms_Quartett.exe
 C:\Users\fschu\Source\Repos\Quartett_Projekt1\forms_Quartett\obj\Debug\forms_Quartett.pdb
+D:\Github\Quartett_Projekt\forms_Quartett\obj\Debug\forms_Quartett.Game.resources

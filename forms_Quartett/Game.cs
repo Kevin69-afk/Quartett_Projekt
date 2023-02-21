@@ -16,9 +16,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace forms_Quartett
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
-        public Form1()
+        public Game()
         {
             InitializeComponent();
             SetCardValuesFromExcelFile("D:/Github/Quartett_Projekt/Quartett_Data/Cars.xlsx");
@@ -230,7 +230,7 @@ namespace forms_Quartett
 
 
                 case 3:
-                    if (playcard[player[activePlayer].currentActiveCard].speed > playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] && alive[comPlayer])
+                    if (playcard[player[activePlayer].currentActiveCard].speed < playcard[player[comPlayer].currentActiveCard].speed && alive[activePlayer] && alive[comPlayer])
                     {
                         buttonStart.BackColor = Color.LightGreen;
                         player[activePlayer].AddCardAsPassive(playcard[player[comPlayer].currentActiveCard].cardIndex);
@@ -338,6 +338,7 @@ namespace forms_Quartett
             }
             SetLabelText();
             KillPlayer();
+            CheckGameOver();
         }
 
         void SetCardValuesFromExcelFile(string filePath)
@@ -383,7 +384,6 @@ namespace forms_Quartett
             }
         }
 
-
         private void ErrorSamePlayer()
         {   //Wenn man mit sich selbst spielen will, soll ein anderer Spieler für einen ausgewählt werden
             string message = "You cannot play yourself. A random Player will be choosen for you.";
@@ -393,7 +393,7 @@ namespace forms_Quartett
 
             result = MessageBox.Show(message, caption, buttons);
 
-            while (activePlayer == comPlayer) comPlayer = rnd.Next(0, 4);
+            while (activePlayer == comPlayer || !alive[comPlayer]) comPlayer = rnd.Next(0, 4);
         }
 
         private void ErrorDeadPlayer()
@@ -406,13 +406,13 @@ namespace forms_Quartett
                  message = "You cannot play, when you're dead.";
                  caption = "You're dead.";
 
-                while (!alive[activePlayer]) activePlayer= rnd.Next(0, 4);
+                while (activePlayer == comPlayer || !alive[activePlayer]) activePlayer= rnd.Next(0, 4);
             }else if (!alive[comPlayer])
             {
                  message = "You cannot play against a dead enemy.";
                  caption = "Dead Enemy";
 
-                while (!alive[comPlayer]) comPlayer = rnd.Next(0, 4);
+                while (activePlayer == comPlayer || !alive[comPlayer]) comPlayer = rnd.Next(0, 4);
             }
 
             MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -450,6 +450,15 @@ namespace forms_Quartett
             }
         }
 
+        private void EndGame_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < alive.Length; i++)
+            {
+                if(i != activePlayer) alive[i] = false;
+            }
+            CheckGameOver();
+        }
+
         private void KillPlayer()
         {
             if (player[activePlayer].GetAmountOfTotalCards() == 0)
@@ -462,6 +471,34 @@ namespace forms_Quartett
                 alive[comPlayer] = false;
             }
 
+        }
+
+        private void CheckGameOver()
+        {
+            int playersAlive = 0;
+            for(int i = 0; i < alive.Length; i++)
+            {
+                if (alive[i]) playersAlive++;
+            }
+
+            Console.WriteLine($"Players left: {playersAlive}");
+
+            if(playersAlive == 1)
+            {
+                int winner = 0;
+                for(int i = 0;i < alive.Length;i++)
+                {
+                    if (alive[i]) winner = i+1;
+                }
+                string message = $"Player {winner} won the Game!";
+                string caption = "Game Over";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+                Application.Exit();
+                Console.WriteLine("Exit NOW!");
+            }
         }
     }
 }

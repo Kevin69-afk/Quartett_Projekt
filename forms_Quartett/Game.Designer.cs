@@ -1,6 +1,6 @@
 ﻿namespace forms_Quartett
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -51,6 +51,7 @@
             this.labelOffHandHeader = new System.Windows.Forms.Label();
             this.labelActiveHandHeader = new System.Windows.Forms.Label();
             this.labelActiveHand = new System.Windows.Forms.Label();
+            this.EndGame = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelPlayer
@@ -309,11 +310,24 @@
             this.labelActiveHand.Text = "On-Hand";
             this.labelActiveHand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // EndGame
+            // 
+            this.EndGame.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.EndGame.Font = new System.Drawing.Font("Arial", 8F);
+            this.EndGame.Location = new System.Drawing.Point(392, 58);
+            this.EndGame.Name = "EndGame";
+            this.EndGame.Size = new System.Drawing.Size(106, 40);
+            this.EndGame.TabIndex = 29;
+            this.EndGame.Text = "End Game";
+            this.EndGame.UseVisualStyleBackColor = false;
+            this.EndGame.Click += new System.EventHandler(this.EndGame_Click);
+            // 
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 383);
+            this.Controls.Add(this.EndGame);
             this.Controls.Add(this.labelActiveHandHeader);
             this.Controls.Add(this.labelActiveHand);
             this.Controls.Add(this.labelOffHandHeader);
@@ -338,7 +352,7 @@
             this.Controls.Add(this.labelPS);
             this.Controls.Add(this.labelPlayer);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Name = "Game";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -368,6 +382,7 @@
         private System.Windows.Forms.Label labelOffHandHeader;
         private System.Windows.Forms.Label labelActiveHandHeader;
         private System.Windows.Forms.Label labelActiveHand;
+        private System.Windows.Forms.Button EndGame;
     }
 }
 
