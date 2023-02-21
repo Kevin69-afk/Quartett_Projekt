@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExcelDataReader;
 using System.Diagnostics;
+using System.Web;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace forms_Quartett
 {
@@ -167,10 +169,10 @@ namespace forms_Quartett
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            if (activePlayer == comPlayer) ErrorSamePlayer();
+            if (activePlayer == comPlayer) ErrorSamePlayer(); //Die Karten mit dem jeweiligen ausgewählten Wert die ausgewählt wurden, sollen mit denen der anderen Spieler verglichen werden. 
+            // Dannach soll der nächst Spieler der aktive Spieler sein.
 
-            Console.WriteLine($"Active Player {activePlayer}\n Com Player {comPlayer}");
-
+            if (alive[activePlayer] == false || alive[comPlayer] == false) ErrorDeadPlayer();
             switch (category)
             {
                 case 1:
@@ -335,6 +337,7 @@ namespace forms_Quartett
                     break;
             }
             SetLabelText();
+            KillPlayer();
         }
 
         void SetCardValuesFromExcelFile(string filePath)
@@ -393,6 +396,31 @@ namespace forms_Quartett
             while (activePlayer == comPlayer) comPlayer = rnd.Next(0, 4);
         }
 
+        private void ErrorDeadPlayer()
+        {
+            string message = "";
+            string caption = "";
+
+            if (!alive[activePlayer])
+            {
+                 message = "You cannot play, when you're dead.";
+                 caption = "You're dead.";
+
+                while (!alive[activePlayer]) activePlayer= rnd.Next(0, 4);
+            }else if (!alive[comPlayer])
+            {
+                 message = "You cannot play against a dead enemy.";
+                 caption = "Dead Enemy";
+
+                while (!alive[comPlayer]) comPlayer = rnd.Next(0, 4);
+            }
+
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+        }
+
         private void SetLabelText()
         {
             labelCarName.Text = $"Audi {playcard[player[activePlayer].currentActiveCard].name}";
@@ -424,20 +452,12 @@ namespace forms_Quartett
 
         private void KillPlayer()
         {
-            if (player[activePlayer].GetAmountOfTotalCards() != 0)
-            {
-                alive[activePlayer] = true;
-            }
-            else
+            if (player[activePlayer].GetAmountOfTotalCards() == 0)
             {
                 alive[activePlayer] = false;
             }
 
-            if (player[comPlayer].GetAmountOfTotalCards() != 0)
-            {
-                alive[comPlayer] = true;
-            }
-            else
+            if (player[comPlayer].GetAmountOfTotalCards() == 0)
             {
                 alive[comPlayer] = false;
             }
